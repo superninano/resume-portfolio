@@ -1,0 +1,27 @@
+# OS 파일
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE 설정
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 환경 변수
+.env.local
+.env.*.local
+
+# Node modules (사용하지 않으나 향후 참고)
+node_modules/
+npm-debug.log
+
+# 빌드 출력 (향후 필요 시)
+dist/
+build/
+
+# 로컬 테스트 파일
+*.test.local.html

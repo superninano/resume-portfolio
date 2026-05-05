@@ -1,0 +1,580 @@
+/* ===== 모바일 우선: 태블릿 (640px 이상) ===== */
+@media (min-width: 640px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+  }
+
+  .hero-name {
+    font-size: 3rem;
+  }
+
+  .balance-sheet {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== 모바일 우선: 데스크톱 (1025px 이상) ===== */
+@media (min-width: 1025px) {
+  .nav-links {
+    display: flex;
+  }
+
+  #hamburger {
+    display: none;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-name {
+    font-size: 3.5rem;
+  }
+}
+
+/* ===== 반응형 디자인: Tablet (1024px 이하) ===== */
+@media (max-width: 1024px) {
+  /* 네비게이션 */
+  .nav-links {
+    display: none;
+  }
+
+  #hamburger {
+    display: flex;
+  }
+
+  /* Hero 섹션 */
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* About 섹션 */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Skills 섹션 */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Projects 섹션 */
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Contact 섹션 */
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  #contactForm button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Section padding */
+  section {
+    padding: 3.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Timeline 반응형 */
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    left: -3px;
+  }
+
+  .timeline-dot {
+    left: -1.6rem;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    left: -1.675rem;
+  }
+}
+
+/* ===== 반응형 디자인: Mobile (640px 이하) ===== */
+@media (max-width: 640px) {
+  :root {
+    --section-padding: 2.5rem 0;
+  }
+
+  body {
+    font-size: 0.95rem;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  /* 컨테이너 */
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* 헤더/네비게이션 */
+  #navbar {
+    padding: 0 1rem;
+  }
+
+  nav {
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  /* 모바일 메뉴 */
+  #mobileMenu {
+    top: 56px;
+    padding: 0.75rem;
+  }
+
+  #mobileMenu a {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Hero 섹션 */
+  #hero {
+    margin-top: 56px;
+    padding: 2rem 0;
+  }
+
+  .hero-greeting {
+    font-size: 1rem;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta {
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.875rem;
+    width: 100%;
+  }
+
+  .btn-sm {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .hero-social {
+    gap: 1rem;
+  }
+
+  .hero-social a {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  /* 섹션 타이틀 */
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title::after {
+    width: 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* About 섹션 */
+  .about-grid {
+    gap: 1.5rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  /* Skills 섹션 */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .skill-category-card {
+    padding: 1rem;
+  }
+
+  .skill-category-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags {
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  /* Experience 섹션 */
+  .timeline {
+    padding-left: 1.25rem;
+  }
+
+  .timeline::before {
+    left: -3px;
+  }
+
+  .timeline-dot {
+    left: -1.45rem;
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    left: -1.55rem;
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+  }
+
+  .company-name {
+    font-size: 1.1rem;
+  }
+
+  .job-title {
+    font-size: 0.9rem;
+  }
+
+  .job-desc {
+    font-size: 0.9rem;
+  }
+
+  .tech-used {
+    gap: 0.25rem;
+  }
+
+  /* Projects 섹션 */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-thumbnail {
+    height: 150px;
+    font-size: 2.5rem;
+  }
+
+  .project-body {
+    padding: 1rem;
+  }
+
+  .project-name {
+    font-size: 1.1rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+  }
+
+  .project-links {
+    gap: 0.5rem;
+  }
+
+  .project-links .btn {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Education 섹션 */
+  .education-item {
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .education-item:hover {
+    padding: 1rem;
+    margin: 0 -1rem;
+  }
+
+  .edu-period {
+    font-size: 0.8rem;
+  }
+
+  .education-item h3 {
+    font-size: 1rem;
+  }
+
+  .education-item p {
+    font-size: 0.9rem;
+  }
+
+  /* Contact 섹션 */
+  .contact-wrapper {
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .error-msg {
+    font-size: 0.7rem;
+  }
+
+  .social-links {
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    padding: 0.75rem;
+  }
+
+  .social-link span {
+    font-size: 0.95rem;
+  }
+
+  .social-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-social {
+    margin-bottom: 0.75rem;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  /* 고정 버튼 */
+  #darkModeToggle,
+  #scrollToTop {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  #darkModeToggle {
+    bottom: 4.5rem;
+  }
+
+  /* h1-h6 크기 조정 */
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.1rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.95rem; }
+
+  /* 텍스트 유틸리티 */
+  .text-center {
+    text-align: center;
+  }
+
+  /* 여백 축소 */
+  .mt-1 { margin-top: 0.25rem; }
+  .mt-2 { margin-top: 0.5rem; }
+  .mt-3 { margin-top: 0.75rem; }
+  .mt-4 { margin-top: 1rem; }
+
+  .mb-1 { margin-bottom: 0.25rem; }
+  .mb-2 { margin-bottom: 0.5rem; }
+  .mb-3 { margin-bottom: 0.75rem; }
+  .mb-4 { margin-bottom: 1rem; }
+}
+
+/* ===== 아주 작은 화면 (480px 이하) ===== */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-name {
+    font-size: 1.75rem;
+  }
+
+  .hero-social {
+    gap: 0.75rem;
+  }
+
+  .hero-social a {
+    width: 24px;
+    height: 24px;
+    font-size: 0.9rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  #darkModeToggle,
+  #scrollToTop {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.9rem;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  #darkModeToggle {
+    bottom: 4rem;
+  }
+}
+
+/* ===== 인쇄 스타일 ===== */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  #navbar,
+  #darkModeToggle,
+  #scrollToTop {
+    display: none;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: #000;
+  }
+}
+
+/* ===== 접근성: 동작 감소 선호 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

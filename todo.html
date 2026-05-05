@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        .todo-list {
+            list-style: none;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+
+        .todo-item:hover {
+            background: #f9f9f9;
+        }
+
+        .todo-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .todo-text {
+            flex: 1;
+            color: #333;
+            font-size: 16px;
+            word-break: break-word;
+        }
+
+        .todo-item.completed .todo-text {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            padding: 6px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .delete-btn:hover {
+            background: #ff5252;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Todo List</h1>
+
+        <div class="input-group">
+            <input
+                type="text"
+                id="todoInput"
+                placeholder="할 일을 입력하세요..."
+                autocomplete="off"
+            >
+            <button onclick="addTodo()">추가</button>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+        <div class="empty-state" id="emptyState">
+            할 일을 추가해주세요 ✨
+        </div>
+    </div>
+
+    <script>
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+        const emptyState = document.getElementById('emptyState');
+
+        // 로컬스토리지에서 todo 로드
+        function loadTodos() {
+            const saved = localStorage.getItem('todos');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        // 로컬스토리지에 저장
+        function saveTodos(todos) {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // 화면 렌더링
+        function renderTodos() {
+            const todos = loadTodos();
+            todoList.innerHTML = '';
+
+            if (todos.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            todos.forEach((todo, index) => {
+                const li = document.createElement('li');
+                li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+
+                li.innerHTML = `
+                    <input
+                        type="checkbox"
+                        ${todo.completed ? 'checked' : ''}
+                        onchange="toggleTodo(${index})"
+                    >
+                    <span class="todo-text">${escapeHtml(todo.text)}</span>
+                    <button class="delete-btn" onclick="deleteTodo(${index})">삭제</button>
+                `;
+
+                todoList.appendChild(li);
+            });
+        }
+
+        function addTodo() {
+            const text = todoInput.value.trim();
+            if (!text) return;
+
+            const todos = loadTodos();
+            todos.push({ text, completed: false });
+            saveTodos(todos);
+
+            todoInput.value = '';
+            renderTodos();
+            todoInput.focus();
+        }
+
+        function toggleTodo(index) {
+            const todos = loadTodos();
+            todos[index].completed = !todos[index].completed;
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        function deleteTodo(index) {
+            const todos = loadTodos();
+            todos.splice(index, 1);
+            saveTodos(todos);
+            renderTodos();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 엔터 키 지원
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTodo();
+        });
+
+        // 초기 렌더링
+        renderTodos();
+    </script>
+</body>
+</html>
